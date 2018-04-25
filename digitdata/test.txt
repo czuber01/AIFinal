@@ -1,0 +1,47 @@
+AI:
+fix for face data
+fix feature vector
+write out perceptron classifier
+write wrapper for amount of data to train on
+write timing function
+
+
+tonight:
+study numanal
+work on ai project, just check methodology
+work on data science
+look at prinprog again to get familiar
+
+tuesday:
+datascience, numanalexam
+do ai problem 3, finish data science, do prinprog assignment!!
+
+wednesday:
+ai,prinprog,alg
+
+thursday:
+prinprog due, ai due, datascience due, 
+
+friday:
+writeup ai project report
+
+saturday:
+prinprog due
+study algorithms
+
+sunday
+
+monday
+
+tuesday
+
+
+wednesday
+things to do rip
+prinprog scheme assignment
+data science assignment
+ai problem 3
+data science large project
+study data science
+study algorithms!!(karprabinproblems,hashinginuniversalhashingframework,mst,mincuts,allpairs,numberingschemes,shortestpaths,connectedcomponents
+prin prog assignment
