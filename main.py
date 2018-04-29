@@ -36,10 +36,23 @@ outcomeprob,probmat=train.NBClassifier(labelarray,intarray)
 #print outcomeprob
 #print probmat
 #print probmat
+
 labelset=train.labelSet(labelarray)
-testedmat=test.predict(labelset, outcomeprob,probmat,testintarray) 
+testedmat=test.predict(labelset, outcomeprob,probmat,testintarray)
+
+
 print testedmat
 print test.error(testedmat,testlabelarray)
+
+# ###uncomment to use perceptron
+# ###outputs a 1 weight vector if training for Face, and an array of 10 weight vectors for digit training
+# weightVector = train.perceptronClassifier(labelarray,intarray,True)
+# ###outputs an array of the result of using the training vectors on test data
+# testedResults = test.predictPerceptronDigit(weightVector,testintarray)
+# ###error from the test
+# perceptronError = test.error(testedResults, testlabelarray)
+# print(testedResults)
+# print(perceptronError)
     
 
 
