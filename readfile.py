@@ -53,13 +53,13 @@ def loadImageFile(filename):
 
 
     
-def loadLabelFile(filename):
+def loadLabelFile(filename,n):
     labelarray=[]
     with open(filename) as f:
         labelarray=f.readlines()
     for i in range(len(labelarray)):
         labelarray[i]=int(labelarray[i][0])
-    
+    labelarray=labelarray[:n]
     return labelarray
         #right now you have a list of lists? each with one element
         #return an array of integers as labels
@@ -70,8 +70,8 @@ def filetoarray(fullrowsarray,height,n):
         singleimage=[]
         for i in range(height):
             rowtointlist=[]
-            fullrowsarray[i]=fullrowsarray[i][:-1]
-            for k in fullrowsarray[i]:
+            fullrowsarray[j*height+i]=fullrowsarray[j*height+i][:-1]
+            for k in fullrowsarray[j*height+i]:
                 rowtointlist.append(convertInteger(k))
             singleimage.append(rowtointlist)
         allimages.append(singleimage) 

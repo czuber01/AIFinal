@@ -31,29 +31,39 @@ def outcomeTotals(indiceslist):
         outcomenumber[i]=len(indiceslist[i])
     return outcomenumber
 
-def ProbabilityMatrix(features, outcomenumber, indiceslist,labelset):
+def ProbabilityMatrix(features, outcomenumber, indiceslist,labelset,smoothingfactor):
     combinedfeaturesmatrices=[]
     probabilitymatrices=[]
     for i in labelset:
+        #combined feeatures matrix takes the entire matrix of all feature vectors and partitions
+        #based on outcome. so one matrix will have all of the feature vectors from one outcome
+        #this single combined features matrix can then be summed by row, and divided by the total
+        #number of columns in order to get the probability of that single feature for the given outcome
         combinedfeaturesmatrix=np.zeros((outcomenumber[i],len(features[0])),dtype=float)
-        #print outcomenumber[i]
-        #print indiceslist[i]
         for k in range(outcomenumber[i]):
             combinedfeaturesmatrix[k]=features[indiceslist[i][k]]
         combinedfeaturesmatrices.append(combinedfeaturesmatrix)
+
         probabilityvector=np.sum(combinedfeaturesmatrices[i],axis=0)    
         probabilityvector=np.divide(probabilityvector, outcomenumber[i])
+        '''
+        if i == 1 or i==2:
+            print combinedfeaturesmatrix
+            print probabilityvector
+        '''
         probabilitymatrices.append(probabilityvector)
     return probabilitymatrices
 
-def NBClassifier(labelarray,intarray):
+def NBClassifier(labelarray,feature,smoothfactor):
     indiceslist=outcomeIndexMatrix(labelarray)
     outcomenumbers=outcomeTotals(indiceslist)
+    #probability for each pssible outcome, this is an array of prior probs
     proboutcome=np.divide(outcomenumbers,float(len(labelarray)))
-    print proboutcome
-    feature= features.mostBasicFeatures(intarray)
+  
+    #feature= features.basicFeatures(intarray)
     labelset=labelSet(labelarray)
-    probabilitymatrix=ProbabilityMatrix(feature,outcomenumbers,indiceslist,labelset)
+    smoothingfactor=smoothfactor
+    probabilitymatrix=ProbabilityMatrix(feature,outcomenumbers,indiceslist,labelset,smoothingfactor)
     return proboutcome,probabilitymatrix
 
 #def perceptronClassifier(labelarray,intarray):

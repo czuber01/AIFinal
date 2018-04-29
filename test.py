@@ -11,8 +11,7 @@ import numpy as np
 import features
 
 
-def predict(trainlabelset,outcomeprob,probmat,testintarray):
-    testfeatures=features.basicFeatures(testintarray)
+def predict(trainlabelset,outcomeprob,probmat,testfeatures):
    # print testfeatures
     predictedoutcomes=[]
     for i in range(len(testfeatures)):
@@ -22,15 +21,18 @@ def predict(trainlabelset,outcomeprob,probmat,testintarray):
         testvec=testfeatures[i]
         for k in range(len(probmat)):
             probvec=probmat[k]
+            
             singleprobvector=np.zeros((len(testvec),),dtype=float)
             for j in range(len(testvec)):
-                singleprobvector[j]=testvec[j]*probvec[j]
-            singleprobvector[ singleprobvector == 0] = 1
+                #here we are only multiplying by positive probs and negatives that are 0, need to include
+            #nonzero negativeoutcome probabilities
+                singleprobvector[j]=testvec[j]*probvec[j] + (1-testvec[j])*(1-probvec[j])
+           # singleprobvector[ singleprobvector == 0] = 1
             probprod=np.prod(singleprobvector)
-            
+           # print probprod
             probprod=outcomeprob[k]*probprod
             outcomeprobvector.append(probprod)
-        print outcomeprobvector
+        #print outcomeprobvector
         predictedoutcomes.append(np.argmax(outcomeprobvector))
     return predictedoutcomes
 

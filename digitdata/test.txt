@@ -1,47 +1,39 @@
 AI:
 fix for face data
-fix feature vector
 write out perceptron classifier
-write wrapper for amount of data to train on
 write timing function
+fix for smoothing factor
 
+
+study algorithms!!(karprabinproblems,hashinginuniversalhashingframework,mst,mincuts,allpairs,numberingschemes,shortestpaths,connectedcomponents
 
 tonight:
-study numanal
-work on ai project, just check methodology
-work on data science
-look at prinprog again to get familiar
+work on ai for a few hours, do prin prog homework starting at midnight
+tomorrow:
+start studying algorithms in morning, seriously this is your day
+sunday:
+finish ai project, study data science, start data science project
+monday:
+drs appt, study algo all day, class, study algo all night
 
 tuesday:
-datascience, numanalexam
-do ai problem 3, finish data science, do prinprog assignment!!
 
 wednesday:
-ai,prinprog,alg
+ai project due
 
 thursday:
-prinprog due, ai due, datascience due, 
+data science final 12
+drs appts
 
 friday:
-writeup ai project report
+algo final 4
 
-saturday:
-prinprog due
-study algorithms
-
-sunday
-
-monday
-
-tuesday
-
-
-wednesday
-things to do rip
-prinprog scheme assignment
-data science assignment
-ai problem 3
-data science large project
-study data science
-study algorithms!!(karprabinproblems,hashinginuniversalhashingframework,mst,mincuts,allpairs,numberingschemes,shortestpaths,connectedcomponents
-prin prog assignment
+then: work on data science project, ai test, prinprog test
+everything due
+prinproghw1,hw2
+ai project
+data science test
+alg test
+data science project
+ai test
+prinprogtest
