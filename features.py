@@ -23,7 +23,19 @@ class supportedVector:
         
     def __normalize__():
 '''        
+def pixelbypixel(dataarray):
     
+    numrows=len(dataarray[0])
+    numcols=len(dataarray[0][0])
+    numpixels=numrows*numcols
+    features=np.zeros((len(dataarray),numrows*numcols),dtype=int)
+    for i in range(len(dataarray)):
+        for j in range(numrows):
+            for k in range(numcols):
+                if dataarray[i][j][k]!=0:
+                    features[i][numcols*j+k]=1
+    return features
+
 def basicFeatures(dataarray):
     featurearray=[]
     numrows=len(dataarray[0])
@@ -57,8 +69,7 @@ def mostBasicFeatures2(dataarray):
     numrows=len(dataarray[0])
     numcols=len(dataarray[0][0])
     numpixels=numrows*numcols
-    for i in range(len(dataarray)):
-        print dataarray[0]
+
     for i in range(len(dataarray)):
         singlematrix=dataarray[i]
         features=np.zeros((numpixels,),dtype=int)

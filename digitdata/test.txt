@@ -1,39 +1,44 @@
 AI:
-fix for face data
-write out perceptron classifier
-write timing function
+fix digit perceptron
+write timing function and test with percentages of data
 fix for smoothing factor
+write up report
 
 
-study algorithms!!(karprabinproblems,hashinginuniversalhashingframework,mst,mincuts,allpairs,numberingschemes,shortestpaths,connectedcomponents
-
-tonight:
-work on ai for a few hours, do prin prog homework starting at midnight
-tomorrow:
-start studying algorithms in morning, seriously this is your day
-sunday:
-finish ai project, study data science, start data science project
-monday:
-drs appt, study algo all day, class, study algo all night
+study algorithms!!(hashinginuniversalhashingframework,mst,mincuts,numberingschemes,connectedcomponents
 
 tuesday:
+spend one hour on ai code
+write up algo dp examples and karp rabin examples
+go over data science algorithms
 
 wednesday:
-ai project due
+wake up at 7
+go for an hour run, shower
+print out form needed
+go to dr appt at 9:45
+bring with you: soccerball, bathing suit, 
 
 thursday:
 data science final 12
 drs appts
+bring home: uniqlo clothes, sneakers
+bring back: travel towel, try on uniqlo order, black dress for japan, olive oil cake, nike sneakers
+black shoe laces, long gym shorts, the black dress for japan, denim shorts
+
 
 friday:
 algo final 4
 
-then: work on data science project, ai test, prinprog test
-everything due
-prinproghw1,hw2
-ai project
-data science test
-alg test
+then: 
 data science project
 ai test
 prinprogtest
+
+for japan:
+download maps
+buy train pass
+buy pocket wifi? or sim card
+start starring places
+clear phone to have memory
+find passport

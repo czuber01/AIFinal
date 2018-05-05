@@ -67,4 +67,125 @@ def NBClassifier(labelarray,feature,smoothfactor):
     return proboutcome,probabilitymatrix
 
 #def perceptronClassifier(labelarray,intarray):
+  
+### method intializes 10 weight vectors,1 for each digit, with an initial weight of 5
+### returns an array that contains all 10 weight vectors
+### length of each weight vector is the number of features+1, extra is for weight w0
+def createDigitWeightVector(numFeatures):
+    allWeightVector = np.full((1,numFeatures),.5,dtype=float)
+    allWeightVector[0]=1
+    for j in range(9):
+        weightVector = np.full((1,numFeatures),.5,dtype=float)
+        weightVector[0]=1
+        '''
+        for i in range(numFeatures+1):
+            ###extra weight, w0, starts at 1
+            if i == 0:
+                weightVector.append(1)
+            else:
+                weightVector.append(5) #initial weights are all 5
+        '''
+        
+        allWeightVector=np.append(allWeightVector,weightVector,axis=0)
+    return allWeightVector
+
+### method initializes and returns single weight vector for face or not face
+### initial weights are 5
+### length of each weight vector is the number of features+1
+def createFaceWeightVector(numFeatures):
+    weightVector=np.full((numFeatures,),.5,dtype=float)
+    weightVector[0]=1
+    return weightVector
+    '''   
+    weightVector=[]         
+    for i in range(numFeatures+1):
+        if i == 0:
+            weightVector.append(1)
+        else:
+            weightVector.append(5)
+    '''
+
+### method used to train if our images or digits
+def trainingDigit(labelarray,featureArray):
+    ###create the 10 weight vectos
+    weightVector = createDigitWeightVector(len(featureArray[0]))
+    ###used to check how many times a vector has to be corrected
+    correctness = 101
+    counter=0
+        ###reset correctness for each loop through all the images
+        ###go through each image's feature vector
+    while correctness>100:
+        counter+=1
+        correctness=0
+        for i in range(len(featureArray)):
+            label=labelarray[i]
+            labelvec=np.zeros((10,1),dtype=int)
+            labelvec[label]=1
+            for j in range(10):
+                dotprod=np.dot(featureArray[i], weightVector[j])
+                if dotprod>=0:
+                    if label != j:
+                        correctness+=1
+                        weightVector[j]=np.subtract(weightVector[j],featureArray[i])
+                else:
+                    if label == j:
+                        correctness+=1
+                        weightVector[j]=np.add(weightVector[j],featureArray[i])
+#        if counter>1000:
+ #           return weightVector
+    return weightVector,counter
+        
+### method used used for training if our image is a face
+def trainingFace(labelarray,featureArray):
+    ### only one weight vector is needed for face
+    weightVector = createFaceWeightVector(len(featureArray[0]))
     
+    correctness = 0
+    counter=0
+    while True:
+        correctness = 0
+        for i in range(len(featureArray)):
+            ### multiply the feature vector and weight vector
+            dotProduct = np.dot(featureArray[i], weightVector)
+            ### 1 for face, 0 for not face
+            label = labelarray[i]
+            ### weight vector predicted face
+            if dotProduct >= 0:
+                ### false positive
+                if label == 0:
+                    weightVector = np.subtract(weightVector,featureArray[i])
+                    correctness = correctness + 1
+            ### weight vector predicted not face
+            else:
+                ### false negative
+                if label == 1:
+                    weightVector = np.add(weightVector,featureArray[i])
+                    correctness = correctness + 1
+        counter+=1
+        if counter> 10000:
+            print 'early end'
+            return weightVector,counter
+        if correctness == 0:
+            ### return corrected weight vector
+            return weightVector,counter
+
+
+
+def perceptronClassifier(labelarray,featureArray,isDigit):
+    #featureArray = features.basicFeatures(intarray)
+    weightVector = []
+    ###we must insert a 1 before every feature vector for dot product with weight vector
+    onesvec=np.ones((len(featureArray),1))
+    featureArray=np.append(onesvec,featureArray,1)
+    
+    #for featureVector in featureArray:
+     #   featureVector.insert(0,1)
+
+    if(isDigit == True): #digit
+        weightVector,count = trainingDigit(labelarray,featureArray)
+
+    else: #face
+        weightVector,count = trainingFace(labelarray,featureArray)
+
+    ### returns corrected weight vector
+    return weightVector,count
